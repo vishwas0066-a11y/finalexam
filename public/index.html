@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Library</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <p class="eyebrow">MONGODB ATLAS · MOVIE DATABASE</p>
+        <h1>Movie Library</h1>
+        <p class="intro">Keep your collection organized. Add, update, and remove movies below.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="form-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MOVIE DETAILS</p>
+            <h2 id="form-heading">Add a movie</h2>
+          </div>
+        </div>
+        <form id="movie-form">
+          <div class="form-grid">
+            <label>
+              Title
+              <input name="title" maxlength="120" required placeholder="e.g. The Grand Budapest Hotel">
+            </label>
+            <label>
+              Year
+              <input name="year" type="number" min="1888" required placeholder="2014">
+            </label>
+            <label>
+              Genre
+              <input name="genre" maxlength="60" required placeholder="Comedy">
+            </label>
+            <label>
+              Director
+              <input name="director" maxlength="120" required placeholder="Wes Anderson">
+            </label>
+            <label>
+              Rating (0–10)
+              <input name="rating" type="number" min="0" max="10" step="0.1" required placeholder="8.1">
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="submit-button">Add movie</button>
+            <button type="button" class="button-secondary" id="cancel-button" hidden>Cancel edit</button>
+          </div>
+          <p id="form-message" class="message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="library" aria-labelledby="library-heading">
+        <div class="section-heading library-heading">
+          <div>
+            <p class="eyebrow">YOUR COLLECTION</p>
+            <h2 id="library-heading">Movies <span id="movie-count" class="count">0</span></h2>
+          </div>
+          <button type="button" class="button-secondary" id="refresh-button">Refresh list</button>
+        </div>
+        <p id="list-message" class="message" role="status" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Director</th>
+                <th scope="col">Rating</th>
+                <th scope="col"><span class="sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="movie-list"></tbody>
+          </table>
+          <p id="empty-state" class="empty-state" hidden>No movies yet. Add one using the form above.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
